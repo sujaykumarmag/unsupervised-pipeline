@@ -19,12 +19,9 @@ class KMeansClustering(ClusteringTemplate):
 
    
     def train(self, data,enable_vis):
-        # Implement KMeans training without hyperparameters
         
         # Create directory to save results
         os.makedirs("results/kmeans/", exist_ok=True)
-          
-        # Train KMeans with hyperparameters and obtain clusters and scores
         clusters, scores = self.train_with_hyp(data)
         
         # Plot elbow curve
@@ -39,12 +36,6 @@ class KMeansClustering(ClusteringTemplate):
 
         # Compute gap statistics
         gap_stats = range(2, 10)
-        # get_plots_gap(gap_stats, "kmeans", 1)
-        
-        # # Plot silhouette plot
-        # range_n_clusters = [2, 3, 4, 5, 6, 7, 8, 9, 10]  
-        # plot_silhouette(data, range_n_clusters)
-        
         inertia = [scores[k] for k in range(2, 10)]
         silhouette_scores = [silhouette_score(data, clusters[k]) for k in range(2, 10)]
         david_bouldin_scores = [self.david_bouldin_score(data, clusters[k], kmeans.cluster_centers_) for k, kmeans in zip(range(2, 10), [KMeans(n_clusters=k).fit(data) for k in range(2, 10)])]
@@ -109,19 +100,7 @@ class KMeansClustering(ClusteringTemplate):
     
         return gap_stats
 
-        # for k in range(1, k_max + 1):
-        #     kmeans = KMeans(n_clusters=k).fit(X)
-        #     within_cluster_dispersion[k - 1] = kmeans.inertia_
 
-        # reference_dispersion = np.zeros((k_max, n_references))
-        # for i in range(n_references):
-        #     random_data = np.random.rand(*X.shape)
-        #     for k in range(1, k_max + 1):
-        #         kmeans = KMeans(n_clusters=k).fit(random_data)
-        #         reference_dispersion[k - 1, i] = kmeans.inertia_
-
-        # gap_stats = np.log(reference_dispersion.mean(axis=1)) - np.log(within_cluster_dispersion)
-        # return gap_stats
     
     
         

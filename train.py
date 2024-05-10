@@ -10,6 +10,7 @@
 import os
 import argparse
 from src.clustering.normal_cluster import NormalCluster
+import warnings
 
 parser = argparse.ArgumentParser(description="Clustering Pipeline for different algorithms")
 parser.add_argument("algorithm",metavar="algorithm",type=str,default="kmeans",help="Specify the Algorithm for Clustering")
@@ -20,8 +21,16 @@ parser.add_argument("--add_viz",metavar="add_viz",type=bool,default=False,help="
 # parser.add_argument()
 
 args = parser.parse_args()
-nc = NormalCluster(args)
-print(nc.data)
+
+with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        nc = NormalCluster(args)
+        print(nc.data)
+
+
+
+
+
 
 
 
