@@ -1,7 +1,8 @@
 # unsupervised-pipeline
 
 
+## Video Output
 
-<video width="320" height="240" controls>
-  <source src="task.mp4" type="video/mp4">
-</video>
+
+https://github.com/sujaykumarmag/unsupervised-pipeline/assets/75253527/9fe4d3e9-522d-413e-b4f7-1767e0288cd6
+
